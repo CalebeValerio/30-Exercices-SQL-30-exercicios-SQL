@@ -1,0 +1,13 @@
+#The Hiring Director wants to understand our market coverage. Before looking at salaries or
+performing calculations, they need a basic yet vital report: they want to know the 
+unique job categories registered in our database
+to ensure we are covering all areas of technology.
+
+
+
+
+SELECT DISTINCT(job_title_short) AS Job_Title
+FROM job_postings_fact
+ORDER BY job_title_short ASC;
+
+/*Here is all the jobs we have, nothing is missing everything is done and ready to work*/
