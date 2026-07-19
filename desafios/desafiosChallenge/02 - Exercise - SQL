@@ -1,0 +1,11 @@
+/*
+The Business Problem:
+Our international expansion team is prioritizing recruitment efforts in specific hubs. 
+The Director needs a clean list of all job postings that are strictly based in 'United Kingdom' 
+to analyze the local demand and job titles available in that specific market.
+*/
+
+SELECT job_id, job_title_short, job_location
+FROM job_postings_fact
+WHERE job_location = 'United Kingdom'
+LIMIT 10;
