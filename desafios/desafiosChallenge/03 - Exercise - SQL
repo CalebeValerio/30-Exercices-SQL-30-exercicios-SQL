@@ -1,0 +1,12 @@
+/*
+The Business Problem:
+The Compensation & Benefits team wants to benchmark high-paying roles across the market. 
+The Director requested a report listing job postings that offer an average annual salary 
+greater than $150,000, so they can analyze top-tier tech opportunities.
+*/
+
+SELECT job_title_short, job_id, salary_year_avg
+FROM job_postings_fact
+WHERE salary_year_avg > 150000
+ORDER BY salary_year_avg DESC
+LIMIT 10;
