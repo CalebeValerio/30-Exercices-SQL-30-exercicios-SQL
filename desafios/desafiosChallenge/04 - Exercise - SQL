@@ -1,0 +1,22 @@
+/*
+The Business Problem:
+The Talent Acquisition team is launching a targeted campaign for remote software roles. 
+However, dirty data is corrupting their reports—many job postings are missing salary details entirely (NULL).
+The Director needs a report showing Data Engineer roles that are fully remote, 
+but ONLY those that have a valid, populated annual salary.
+*/
+
+SELECT 
+    job_title_short, 
+    job_id, 
+    salary_year_avg,
+    CASE 
+        WHEN job_work_from_home IS TRUE THEN 'Remote_Job' 
+        ELSE 'Unknown' 
+    END AS Work_Remote_Job
+FROM job_postings_fact
+WHERE salary_year_avg IS NOT NULL 
+  AND job_work_from_home IS TRUE 
+  AND job_title_short = 'Data Engineer'
+ORDER BY salary_year_avg DESC
+LIMIT 10;
