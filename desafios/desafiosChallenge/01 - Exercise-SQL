@@ -9,5 +9,3 @@ to ensure we are covering all areas of technology.
 SELECT DISTINCT(job_title_short) AS Job_Title
 FROM job_postings_fact
 ORDER BY job_title_short ASC;
-
-/*Here is all the jobs we have, nothing is missing everything is done and ready to work*/
