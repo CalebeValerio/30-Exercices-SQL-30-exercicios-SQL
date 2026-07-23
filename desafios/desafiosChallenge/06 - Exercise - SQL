@@ -1,0 +1,19 @@
+-- ====================================================================
+-- Challenge 06: Market Benchmark for Remote Data Analyst Compensation
+-- ====================================================================
+-- Business Context:
+-- Our HR and Talent Acquisition teams are expanding our global remote workforce. 
+-- To set realistic compensation packages and ensure competitive hiring, 
+-- we need a market benchmark of average yearly salaries and active job volume 
+-- for 100% remote Data Analyst positions.
+-- ====================================================================
+
+SELECT 
+    ROUND(AVG(salary_year_avg)) AS Avarage_Salary,
+    COUNT(*) AS Total_Job_Avaliables,
+    job_title_short
+FROM job_postings_fact
+WHERE salary_year_avg IS NOT NULL 
+  AND job_title_short = 'Data Analyst' 
+  AND job_work_from_home IS TRUE
+GROUP BY job_title_short;
