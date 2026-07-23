@@ -1,0 +1,20 @@
+-- ====================================================================
+-- Challenge 07: Compensation & Demand Benchmark Across Data Roles
+-- ====================================================================
+-- Business Context:
+-- Our technology leadership team is planning upcoming headcount and 
+-- structuring budget allocation across core data capabilities. 
+-- To ensure competitive compensation and understand market demand, 
+-- we need a comparative breakdown of average yearly salaries and 
+-- active job volume for Data Analysts, Data Engineers, and Data Scientists.
+-- ====================================================================
+
+SELECT job_title_short,
+       ROUND(AVG(salary_year_avg)) AS Avarage_Salary,
+       COUNT(*) AS Total_Job_Availables
+       
+FROM job_postings_fact
+WHERE job_title_short IN ('Data Analyst', 'Data Engineer', 'Data Scientist') AND
+salary_year_avg IS NOT NULL
+GROUP BY job_title_short
+ORDER BY Avarage_Salary DESC;
