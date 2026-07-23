@@ -1,0 +1,18 @@
+-- ====================================================================
+-- Challenge 08: Above-Average Salary Identification for Data Analysts
+-- ====================================================================
+-- Business Context:
+-- To optimize compensation strategy and retain top talent, the finance and 
+-- HR teams need to identify specific Data Analyst roles that offer salaries 
+-- exceeding the current market average for this position.
+-- ====================================================================
+
+SELECT job_id,
+       job_title_short, 
+       job_location,
+       salary_year_avg
+FROM job_postings_fact
+WHERE salary_year_avg > (SELECT ROUND(AVG(salary_year_avg)) FROM job_postings_fact WHERE job_title_short = 'Data Analyst') 
+  AND salary_year_avg IS NOT NULL
+  AND job_title_short = 'Data Analyst'
+ORDER BY salary_year_avg DESC;
