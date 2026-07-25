@@ -1,0 +1,16 @@
+--------------------------------------------------------------------------------------------
+Exercício 9 - Vagas Remotas por Localização
+
+Problema da Empresa:
+O time de recrutamento quer entender em quais localidades 
+estão concentradas as vagas remotas para Data Analyst, 
+permitindo direcionar campanhas de divulgação para os mercados com maior demanda.
+--------------------------------------------------------------------------------------------
+
+SELECT COUNT(job_title_short) AS Jobs_Avaliable_For_This_Location,
+             job_location
+
+FROM job_postings_fact
+WHERE job_title_short = 'Data Analyst' AND job_work_from_home IS TRUE
+GROUP BY job_location
+ORDER BY Jobs_Avaliable_For_This_Location DESC;
