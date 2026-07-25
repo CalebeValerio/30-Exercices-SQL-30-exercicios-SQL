@@ -1,0 +1,21 @@
+–---------------------------------------------------------------------------------------------------
+Exercise 10 - Identifying High-Paying Data Analyst Jobs
+
+Business Problem:
+The recruiting manager noticed that some Data Analyst job postings 
+offer significantly higher salaries than expected. To review the hiring 
+budget, identify all Data Analyst positions with an average annual salary of at least $100,000.
+----------------------------------------------------------------------------------------------------
+
+SELECT job_id,
+       job_title_short,
+       salary_year_avg,
+       job_location,
+       CASE
+           WHEN salary_year_avg >= 100000 THEN 'Salary_Above_The_AVG'
+           ELSE 'Unkown'
+       END AS High_Salary
+FROM job_postings_fact
+WHERE salary_year_avg >= 100000
+  AND job_title_short = 'Data Analyst'
+ORDER BY salary_year_avg DESC;
