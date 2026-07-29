@@ -1,0 +1,19 @@
+--------------------------------------------------------------------------------------
+Exercise 11 - Identifying Job Titles with Missing Annual Salary Information
+
+Business Problem:
+The HR Director noticed that many job postings do not
+include an annual salary. Before implementing a policy requiring salary 
+transparency, the team wants to identify which job titles most
+frequently omit annual salary information.
+---------------------------------------------------------------------------------------
+
+SELECT job_title_short
+      , COUNT(*) AS Missing_Salary_Postings
+FROM job_postings_fact
+WHERE salary_year_avg IS NULL
+GROUP BY job_title_short
+ORDER BY Missing_Salary_Postings DESC;
+
+-- Business Insight: Data Analyst is among the top job titles with the 
+highest number of postings missing annual salary information.
