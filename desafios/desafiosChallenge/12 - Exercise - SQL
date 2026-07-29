@@ -1,0 +1,22 @@
+---------------------------------------------------------------------------------------
+Exercise 12 - Identifying the Most Common Employment Type for Data Analyst Positions
+
+Business Problem:
+The recruitment team wants 
+to understand which employment type is most common among Data Analyst job postings. 
+This insight will help prioritize future hiring strategies and recruitment campaigns.
+---------------------------------------------------------------------------------------
+
+
+SELECT COUNT(job_title_short) AS Total_Job_Posting, 
+       job_schedule_type,
+       ROUND(COUNT(*) * 100.0 / SUM(COUNT(*)) OVER(), 2) AS Percentage
+FROM job_postings_fact
+WHERE job_title_short = 'Data Analyst' 
+  AND job_schedule_type IS NOT NULL
+GROUP BY job_schedule_type
+ORDER BY Total_Job_Posting DESC;
+
+-- Business Insight:
+-- Full-time represents 86.48% of all Data Analyst job postings,
+-- making it by far the most common employment type.
