@@ -1,0 +1,17 @@
+-----------------------------------------------------------------------------------------------------------------------
+Exercise 14 - Validating Missing Values in Remote Work Information
+
+Business Problem:
+The HR team received reports that some Data Analyst job postings might not specify
+whether the position is remote or on-site. Before investigating the publishing process, 
+the data team was asked to verify whether this issue actually exists in the dataset.
+----------------------------------------------------------------------------------------------------------------------
+
+SELECT job_work_from_home
+FROM job_postings_fact
+WHERE job_work_from_home IS NULL;
+
+-- Business Insight:
+-- No rows were returned, indicating that there are no missing values in the
+-- job_work_from_home column. Therefore, the reported issue could not be
+-- confirmed with the available data.
