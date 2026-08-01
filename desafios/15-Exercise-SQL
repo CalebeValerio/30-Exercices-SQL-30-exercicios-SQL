@@ -1,0 +1,25 @@
+-------------------------------------------------------------------------------------------------
+Exercise 15 - Identifying Locations with the Highest
+Concentration of Premium Data Analyst Jobs
+
+Business Problem:
+The recruiting team received a limited marketing budget to promote 
+premium Data Analyst positions. For this analysis,
+premium jobs are defined as those offering an annual
+salary of at least $120,000. The manager wants to identify
+which locations have the highest concentration of these premium opportunities
+in order to prioritize future recruiting investments.
+--------------------------------------------------------------------------------------------------
+
+SELECT COUNT(job_location) AS Rank,
+       job_location
+FROM job_postings_fact
+WHERE job_title_short = 'Data Analyst'
+  AND salary_year_avg > 120000
+GROUP BY job_location
+ORDER BY Rank DESC;
+
+-- Business Insight:
+-- "Anywhere" has the highest concentration of premium Data Analyst job postings,
+-- followed by New York. These two locations stand out compared to the others,
+-- making them strong candidates for prioritizing future recruiting efforts.
