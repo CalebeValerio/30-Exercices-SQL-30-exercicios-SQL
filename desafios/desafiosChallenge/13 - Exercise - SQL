@@ -1,0 +1,27 @@
+----------------------------------------------------------------------------------------------------------------------
+Exercise 13 - Identifying Locations with the Highest Average Salaries
+
+Business Problem:
+The finance team wants to identify which locations offer the highest average 
+annual salaries for Data Analyst positions. This analysis will help evaluate where hiring budgets are the highest.
+-----------------------------------------------------------------------------------------------------------------------
+
+SELECT 
+    job_title_short, 
+    job_location, 
+    ROUND(AVG(salary_year_avg), 2) AS avg_salary,
+    ROUND(
+        (AVG(salary_year_avg) / SUM(AVG(salary_year_avg)) OVER()) * 100, 
+        2
+    ) AS pct_of_total
+FROM job_postings_fact
+WHERE salary_year_avg IS NOT NULL 
+  AND job_title_short = 'Data Analyst'
+GROUP BY 
+    job_title_short, 
+    job_location
+ORDER BY 
+    avg_salary DESC;
+
+-- Business Insight:
+-- Santa Barbara, CA offers the highest average annual salary among Data Analyst job postings.
