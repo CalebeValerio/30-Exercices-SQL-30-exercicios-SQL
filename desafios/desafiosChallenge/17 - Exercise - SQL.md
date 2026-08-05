@@ -1,4 +1,4 @@
-# 🎯 Desafio 01 — CTEs (`WITH ... AS`)
+# 🎯 Desafio 17 — CTEs (`WITH ... AS`)
 
 ### 📌 O Problema de Negócio
 Mapear as vagas de **Data Analyst** publicadas em 2023 que oferecem salários anuais acima da média geral da categoria naquele mesmo ano.
