@@ -25,4 +25,3 @@ WHERE job_title_short = 'Data Analyst'
   AND EXTRACT(YEAR FROM job_posted_date) = 2023
   AND salary_year_avg > (SELECT media_salario FROM media_salarial)
 ORDER BY salary_year_avg;
----
